@@ -32,7 +32,7 @@ class _AddTasksPageState extends State<AddTasksPage> {
   }
 
   void onUpdateTask(int index, Task task) {
-    tasksBox..putAt(index, Task(task.title, !task.completed, subtitleController.text));
+    tasksBox.putAt(index, Task(task.title, !task.completed, subtitleController.text));
     return;
   }
 
@@ -73,8 +73,6 @@ class _AddTasksPageState extends State<AddTasksPage> {
               child: const Text(
                 'Add todo',
                 style: TextStyle(color: Colors.white),
-
-                // widget.todo == null ? 'Add todo' : 'Update Todo',
               ),
             ),
           ],
