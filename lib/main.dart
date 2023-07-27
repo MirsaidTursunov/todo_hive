@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:todo_hive/presentation/add_phone_number/add_phone_number.dart';
 import 'package:todo_hive/presentation/future_stream/future_builder_page.dart';
 import 'package:todo_hive/presentation/future_stream/stream_builder_page.dart';
 import 'package:todo_hive/presentation/home/home_page.dart';
@@ -12,10 +13,12 @@ import 'data/model/task.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   ///hive ni initialize qilish
-  await Hive.initFlutter();
-  Hive.registerAdapter(TaskAdapter());
-  await Hive.openBox<Task>('todo_box');
+ await initHive();
+  // await Hive.initFlutter();
+  // Hive.registerAdapter(TaskAdapter());
+  // await Hive.openBox<Task>('todo_box');
   runApp(const MyApp());
 }
 
@@ -30,13 +33,15 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      home: const AddPhoneNumber(),
     );
   }
 }
 
-// Future<void> initHive() async {
-//   await Hive.initFlutter();
-//   Hive.registerAdapter(TaskAdapter());
-//   await Hive.openBox<Task>('todo_box');
-// }
+late Box<dynamic> box;
+Future<void> initHive() async {
+  const boxName = 'uacademy_box';
+  final Directory directory = await getApplicationDocumentsDirectory();
+  Hive.init(directory.path);
+  box = await Hive.openBox<dynamic>(boxName);
+}
