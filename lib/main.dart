@@ -12,6 +12,7 @@ import 'data/model/task.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  ///hive ni initialize qilish
   await Hive.initFlutter();
   Hive.registerAdapter(TaskAdapter());
   await Hive.openBox<Task>('todo_box');
