@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_hive/constants/app_localizations.dart';
 import 'package:todo_hive/local_source/local_source.dart';
 import 'package:todo_hive/main.dart';
 
@@ -15,7 +16,7 @@ class _AddPhoneNumberState extends State<AddPhoneNumber> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Phone Number'),
+        title: Text('first_name'.tr),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),

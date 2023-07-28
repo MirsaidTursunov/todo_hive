@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:todo_hive/constants/app_localizations.dart';
 import 'package:todo_hive/data/model/task.dart';
 import 'package:todo_hive/presentation/add_tasks/add_tasks_page.dart';
 import 'package:todo_hive/presentation/home/widget/task_widget.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:todo_hive/routes/app_routes.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -29,7 +31,7 @@ class _HomePageState extends State<HomePage> {
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.orange,
-              title: const Text('Hive ToDo'),
+              title: Text('birthday'.tr),
             ),
             body: tasksBox.isEmpty
                 ? const Center(
@@ -53,8 +55,9 @@ class _HomePageState extends State<HomePage> {
               minimum: const EdgeInsets.all(16),
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => AddTasksPage()));
+                  // Navigator.push(context,
+                  //     MaterialPageRoute(builder: (context) => AddTasksPage()));
+                  Navigator.pushNamed(context, AppRoutes.addTask);
                 },
                 child: const Text('Add task'),
               ),
